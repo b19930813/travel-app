@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import * as admin from 'firebase-admin';
 import * as fireorm from 'fireorm';
 import { Collection, getRepository } from 'fireorm';
-import { DataFunction , Travel} from  '../../Function/DataController'
+import { DataFunction , Travel} from  '../Function/DataController'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore"; 
