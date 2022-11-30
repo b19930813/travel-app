@@ -81,10 +81,13 @@ export class DataFunction {
          result.Title = FindData["Title"];
          result.TravelDate = FindData["TravelDate"];
          result.Remark = FindData["Remark"];
-        
+         console.log(`Find Title ${Title}`);
+      }
+      else{
+        console.log(`Can't Find Title ${Title}`);
       }
     })
-  
+   
     return result;
   }
 

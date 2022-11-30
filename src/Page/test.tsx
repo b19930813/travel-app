@@ -42,7 +42,7 @@ export default function BasicButtons() {
     <Stack spacing={2} direction="row">
       <Button variant="text" onClick={handleCreateData}> 建立一筆資料</Button>
       <Button variant="text" onClick={handleReadAllData}> 讀取全部資料</Button>
-      <Button variant="text" onClick={handleReadDataByTitle}> 讀取全部資料</Button>
+      <Button variant="text" onClick={handleReadDataByTitle}> 讀取一筆資料</Button>
       <Button variant="outlined">Outlined</Button>
     </Stack>
   );

@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import test from '../../Image/tokyotower.jpg'
 import Grid from '@mui/material/Unstable_Grid2';
+import { DataFunction , Travel} from  '../../Function/DataController'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -32,9 +33,18 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard(title: string) {
   const [expanded, setExpanded] = React.useState(false);
 
+  React.useEffect(() => {
+    //取得Login 狀態
+    var userId = localStorage.getItem("userId")
+    
+    if(userId != ""  && typeof userId != "undefined"){
+   
+    }
+    console.log(`userId = ${userId}`)
+}, [])
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
