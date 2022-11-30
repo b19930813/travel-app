@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import test from '../../Image/tokyotower.jpg'
 import Grid from '@mui/material/Unstable_Grid2';
+import {Link}  from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -41,8 +42,8 @@ export default function RecipeReviewCard() {
 
   return (
     <Grid md={4}>
-
-      <Card sx={{ maxWidth: 345 }}>
+<Link to={`123`}>
+  <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -114,6 +115,8 @@ export default function RecipeReviewCard() {
           </CardContent>
         </Collapse>
       </Card>
+</Link>
+     
     </Grid>
 
   );

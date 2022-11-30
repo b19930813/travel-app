@@ -1,27 +1,30 @@
 import React from 'react';
 import './App.css';
-import Main from './Page/main';
-import Test from './Page/test'
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Bar from './Component/Frame/bar'
-import Container from '@mui/material/Container';
+import Layout from "./Component/Frame/Layout";
+import Main from "./Page/Main";
+import MainDetail from "./Page/MainDetail";
+import Login from "./Page/Login";
+import Notfound from "./Page/Notfound";
+import { Routes,Route } from 'react-router-dom';
 
 function App() {
   return (
     < >
-      <Bar />
-      <Container fixed>
-       
-        <BrowserRouter>
-          <Routes  >
-            <Route path="/" element={<Main />} />
-            <Route path="/test" element={<Test />} />
+    {/* 路由表 */}
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route path="login" element={<Login/>}></Route>
+          <Route index element={<Main/>}></Route>
 
-          </Routes  >
-        </BrowserRouter>
-        </Container>
+          {/*動態路由*/}
+          <Route path=":Id" element={<MainDetail/>}></Route> 
+          
+          {/* 錯誤頁面 */}
+          <Route path="*" element={<Notfound/>}></Route>       
 
+        </Route>
 
+      </Routes>
     </>
   );
 }
