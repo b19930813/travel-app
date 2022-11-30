@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Component/Frame/Card';
+import Card from '../Component/Frame/card';
 import Grid from '@mui/material/Unstable_Grid2';
 import '../Component/Css/basic.css'
 import Box from '@mui/material/Box';

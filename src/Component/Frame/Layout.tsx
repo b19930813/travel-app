@@ -1,4 +1,4 @@
-import Bar from './Bar';
+import Bar from './bar';
 import { Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 

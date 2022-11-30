@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Layout from "./Component/Frame/Layout";
-import Main from "./Page/Main";
+import Main from "./Page/main";
 import MainDetail from "./Page/MainDetail";
 import Login from "./Page/Login";
 import Notfound from "./Page/Notfound";
