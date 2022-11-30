@@ -74,7 +74,17 @@ export class DataFunction {
   GetAllTravelByTitle(Title:string): Travel {
     let result = new Travel;
     const querySnapshot = getDocs(collection(this.db, "users"));
-     
+    querySnapshot.then(data => {
+      let FindData = data.docs.find(travel => travel.data()["Title"] == Title)?.data();
+      if(FindData !== undefined){
+         result.Location = FindData["Location"];
+         result.Title = FindData["Title"];
+         result.TravelDate = FindData["TravelDate"];
+         result.Remark = FindData["Remark"];
+        
+      }
+    })
+  
     return result;
   }
 
