@@ -31,11 +31,18 @@ export default function BasicButtons() {
     let result = df.GetAllTravel();
     console.log(result);
   }
+ 
+  const handleReadDataByTitle = () =>{
+    const df = new DataFunction();
+    let result = df.GetAllTravelByTitle("MyTitle");
+    console.log(result);
+  }
 
   return (
     <Stack spacing={2} direction="row">
       <Button variant="text" onClick={handleCreateData}> 建立一筆資料</Button>
       <Button variant="text" onClick={handleReadAllData}> 讀取全部資料</Button>
+      <Button variant="text" onClick={handleReadDataByTitle}> 讀取一筆資料</Button>
       <Button variant="outlined">Outlined</Button>
     </Stack>
   );
