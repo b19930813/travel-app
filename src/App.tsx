@@ -4,6 +4,7 @@ import Layout from "./Component/Frame/Layout";
 import Main from "./Page/main";
 import MainDetail from "./Page/MainDetail";
 import Login from "./Page/Login";
+import Test from "./Page/test";
 import Notfound from "./Page/Notfound";
 import { Routes,Route } from 'react-router-dom';
 import InsertTravel from './Page/insertTreval';
@@ -17,12 +18,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="login" element={<Login/>}></Route>
+          <Route path="test" element={<Test/>}/>
+
           <Route index element={<Main/>}></Route>
 
           {/*動態路由*/}
           <Route path=":Id" element={<MainDetail/>}></Route> 
           <Route path="/insert" element={<InsertTravel />} />
-            <Route path="/manager" element={<ManagerTravel />} />
+          <Route path="/manager" element={<ManagerTravel />} />
           {/* 錯誤頁面 */}
           <Route path="*" element={<Notfound/>}></Route>       
 

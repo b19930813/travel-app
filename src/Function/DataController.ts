@@ -9,13 +9,26 @@ export class Travel {
   public TravelDate: Date;
   public Location: string;
   public Remark: string;
+  public Days: Array<DaySchedule>;
   constructor() {
     this.Title = "";
     this.TravelDate = new Date();
     this.Location = "";
     this.Remark = "";
+    this.Days = new Array<DaySchedule>;
   }
 
+}
+
+export class DaySchedule{
+  public Title:string;
+  public Display:string;
+  public Temp: string;
+  constructor(){
+    this.Title = "";
+    this.Display = "";
+    this.Temp = "";
+  }
 }
 
 export class DataFunction {
@@ -36,6 +49,8 @@ export class DataFunction {
     this.db = getFirestore(this.app);
   }
 
+  //#region Travel CRUD
+
   CreateTravel(travel: Travel): boolean {
     let result: boolean = false;
     try {
@@ -43,8 +58,16 @@ export class DataFunction {
         Title: travel.Title,
         Date: travel.TravelDate,
         Location: travel.Location,
-        Remark: travel.Remark
+        Remark: travel.Remark,      
+        Days: [{"Title":"大阪1","Display":"去1哪","Temp":"Remar1k"}],
+        // test: [{
+        //   0: "Bill Gates",
+        //   1: "Larry Page",
+        //   2: "James Tamplin"
+        // }]
       });
+      console.log(`Array = ${JSON.stringify(travel.Days)}`);
+      console.log(`Array temp = [{"Title":"大阪1","Display":"去1哪","Temp":"Remar1k"}]`);
       console.log("Create Travel Date Success");
       result = true;
     } catch (e) {
@@ -90,6 +113,26 @@ export class DataFunction {
    
     return result;
   }
+  //#endregion
+
+
+  CreateDaySChedule(daySchedule: DaySchedule): boolean {
+    let result: boolean = false;
+    try {
+      const docRef = addDoc(collection(this.db, "users"), {
+        Title: daySchedule.Title,
+        Display: daySchedule.Display,
+        Temp: daySchedule.Temp,
+      });
+      console.log("Create DaySchedule Success");
+      result = true;
+    } catch (e) {
+      console.error("Create DaySchedule Fail", e);
+      result = false;
+    }
+    return result;
+  }
+
 
 
 }
