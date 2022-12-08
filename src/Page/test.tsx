@@ -23,10 +23,8 @@ export default function BasicButtons() {
 
     let travel = new Travel();
     travel.Title = "行程125011";
-    travel.Location = "日本1!";
     travel.TravelDate = new Date();
     travel.Remark = "test dat1a";
-    travel.Days.push(daySchedule);
     let result = df.CreateTravel(travel);
     console.log(`新增一筆資料，結果 : ${result}`);
   }

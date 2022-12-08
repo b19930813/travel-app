@@ -15,7 +15,7 @@ export default function Layout() {
                 </Container>
             </main>
             <footer>
-                表尾
+                
             </footer>
         </>
 

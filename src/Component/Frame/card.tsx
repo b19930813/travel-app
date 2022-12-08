@@ -67,7 +67,7 @@ export default function RecipeReviewCard(title: string) {
             </IconButton>
           }
           title="東京五日遊"
-          subheader="September 14, 2022"
+          subheader="2022/09/14"
         />
         <CardMedia
           component="img"

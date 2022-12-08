@@ -7,15 +7,16 @@ import { collection, addDoc } from "firebase/firestore";
 export class Travel {
   public Title: string;
   public TravelDate: Date;
-  public Location: string;
+  public ImagePath: string;
   public Remark: string;
-  public Days: Array<DaySchedule>;
+
+ 
   constructor() {
     this.Title = "";
     this.TravelDate = new Date();
-    this.Location = "";
+    this.ImagePath = "";
     this.Remark = "";
-    this.Days = new Array<DaySchedule>;
+  
   }
 
 }
@@ -54,19 +55,14 @@ export class DataFunction {
   CreateTravel(travel: Travel): boolean {
     let result: boolean = false;
     try {
-      const docRef = addDoc(collection(this.db, "users"), {
+      const docRef = addDoc(collection(this.db, "Travel"), {
         Title: travel.Title,
         Date: travel.TravelDate,
-        Location: travel.Location,
+      
         Remark: travel.Remark,      
-        Days: [{"Title":"大阪1","Display":"去1哪","Temp":"Remar1k"}],
-        // test: [{
-        //   0: "Bill Gates",
-        //   1: "Larry Page",
-        //   2: "James Tamplin"
-        // }]
+    
       });
-      console.log(`Array = ${JSON.stringify(travel.Days)}`);
+    
       console.log(`Array temp = [{"Title":"大阪1","Display":"去1哪","Temp":"Remar1k"}]`);
       console.log("Create Travel Date Success");
       result = true;
@@ -85,7 +81,7 @@ export class DataFunction {
         let travel = new Travel();
         travel.Title = doc.data()["Title"];
         travel.TravelDate = doc.data()["TravelDate"];
-        travel.Location = doc.data()["Location"];
+       
         travel.Remark = doc.data()["Remark"];
         result.push(travel);
       })
@@ -100,7 +96,7 @@ export class DataFunction {
     querySnapshot.then(data => {
       let FindData = data.docs.find(travel => travel.data()["Title"] == Title)?.data();
       if(FindData !== undefined){
-         result.Location = FindData["Location"];
+      
          result.Title = FindData["Title"];
          result.TravelDate = FindData["TravelDate"];
          result.Remark = FindData["Remark"];
