@@ -14,6 +14,11 @@ import { Console } from 'console';
 
 export default function BasicButtons() {
 
+const handleDeleteData = () =>{
+  const df = new DataFunction();
+df.DeleteAllTravel("行程125011");
+}
+
   const handleCreateData = () => {
     const df = new DataFunction();
     let daySchedule = new DaySchedule();
@@ -22,9 +27,9 @@ export default function BasicButtons() {
     daySchedule.Temp = "Remar1k";
 
     let travel = new Travel();
-    travel.Title = "行程125011";
+    travel.Title = "行程GGG";
     travel.TravelDate = new Date();
-    travel.Remark = "test dat1a";
+    travel.Remark = "testGG";
     let result = df.CreateTravel(travel);
     console.log(`新增一筆資料，結果 : ${result}`);
   }
@@ -58,6 +63,7 @@ export default function BasicButtons() {
       <Button variant="text" onClick={handleReadAllData}> 讀取全部資料</Button>
       <Button variant="text" onClick={handleReadDataByTitle}> 讀取一筆資料</Button>
       <Button variant="text" onClick={handleCreateDayData}> 建立一筆Day資料</Button>
+      <Button variant="text" onClick={handleDeleteData}> 刪除</Button>
       <Button variant="outlined">Outlined</Button>
     </Stack>
   );

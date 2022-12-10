@@ -7,20 +7,28 @@ import { DataFunction, Travel, DaySchedule } from '../Function/DataController'
 
 function App() {
 
+
+  const [statetravel, setTravel] = React.useState(Array<Travel>)
+
   React.useEffect(() => {
-    
+   
+   
 }, [])
 
+const GetTravelList = () => {
+  const df = new DataFunction();
+  let result = df.GetAllTravel();
 
+  
+  return result;
+}
 
-const showResult = () =>{
+const showResult = (travelList: Array<Travel>) =>{
+ 
   const elements = [
    
   ]
-   const df = new DataFunction();
    
-   let result = df.GetAllTravel();
-  
    let travel = new Travel();
    travel.Title = "東京五日遊";
    travel.Remark = "暢遊東京";
@@ -33,17 +41,20 @@ const showResult = () =>{
    travel2.ImagePath = "https://imgur.com/y0ive8d.jpg"
    travel2.TravelDate = new Date("2022-09-20");
 
+   const df = new DataFunction();
+   let result = df.GetAllTravel();
 
-
+  console.log("Get travel List");
+  
   console.log(result);
-  console.log(result.at(1))
-
-  result.map((row) => {
+  console.log(`取得 travelList Length : ${travelList.length}`);
+ 
+  travelList.map((row) => {
     elements.push(Card(travel));
     elements.push(Card(travel2));
   })
    
-  console.log(`取得 result Length : ${result.length}`);
+  
       elements.push(Card(travel));
     elements.push(Card(travel2));
   console.log("push done");
@@ -57,7 +68,7 @@ return(
     <Grid container spacing={2}>
       {/* {Card("Title")} */}
     
-    {showResult()}
+    {showResult(GetTravelList())}
     </Grid>
   </Box>
 

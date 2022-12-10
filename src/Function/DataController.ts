@@ -1,8 +1,9 @@
 
 
-import { initializeApp } from "firebase/app";
-import { getDocs, getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { Cookie } from "@mui/icons-material";
+import { deleteApp, initializeApp } from "firebase/app";
+import { getDocs, getFirestore , deleteDoc , doc} from "firebase/firestore";
+import { collection, addDoc, setDoc } from "firebase/firestore";
 
 export class Travel {
   public Title: string;
@@ -55,7 +56,7 @@ export class DataFunction {
   CreateTravel(travel: Travel): boolean {
     let result: boolean = false;
     try {
-      const docRef = addDoc(collection(this.db, "Travel"), {
+      const docRef = setDoc(doc(this.db, "Travel" , travel.Title), {
         Title: travel.Title,
         Date: travel.TravelDate,
         ImagePath: travel.ImagePath,
@@ -86,9 +87,25 @@ export class DataFunction {
         result.push(travel);
       })
     });
+    console.log("Function Get");
+    console.log(result);
     return result;
   }
 
+  DeleteAllTravel(title: string): boolean {
+    
+    let result: boolean = false;
+    try{
+      deleteDoc(doc(this.db, "Travel",title));
+      console.log("delete a data");
+    }
+    catch (e) {
+      console.error("delete DaySchedule Fail", e);
+      result = false;
+    }
+
+    return result;
+  }
 
   GetAllTravelByTitle(Title:string): Travel {
     let result = new Travel;
