@@ -20,6 +20,7 @@ import { DataFunction , Travel} from  '../../Function/DataController';
 import {Link}  from 'react-router-dom';
 
 
+
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
@@ -35,17 +36,15 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-export default function RecipeReviewCard(title: string) {
+export default function RecipeReviewCard(travel: Travel) {
+  if(travel.Remark.length < 84){
+    travel.Remark.padEnd(84);
+  }
   const [expanded, setExpanded] = React.useState(false);
 
   React.useEffect(() => {
     //取得Login 狀態
-    var userId = localStorage.getItem("userId")
-    
-    if(userId != ""  && typeof userId != "undefined"){
    
-    }
-    console.log(`userId = ${userId}`)
 }, [])
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -58,7 +57,7 @@ export default function RecipeReviewCard(title: string) {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              寶
+              F
             </Avatar>
           }
           action={
@@ -66,18 +65,19 @@ export default function RecipeReviewCard(title: string) {
               <MoreVertIcon />
             </IconButton>
           }
-          title="東京五日遊"
-          subheader="2022/09/14"
+          title={travel.Title}
+          subheader={travel.TravelDate.toDateString()}
         />
         <CardMedia
           component="img"
           height="194"
-          image={test}
+          image={travel.ImagePath}
           alt="Paella dish"
         />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            如果要舉出一些東京的代表性建築，那麼東京鐵塔必然榜上有名。東京鐵塔建成於1953年，是日本首個綜合電波塔，並曾一度作為日本的最高建築，在悠長的歲月里深受日本百姓的喜愛。
+        <CardContent >
+       
+          <Typography variant="body2" color="text.secondary" >
+            {travel.Remark}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
@@ -96,35 +96,7 @@ export default function RecipeReviewCard(title: string) {
             <ExpandMoreIcon />
           </ExpandMore>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Method:</Typography>
-            <Typography paragraph>
-              Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-              aside for 10 minutes.
-            </Typography>
-            <Typography paragraph>
-              Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
-              medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
-              occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
-              large plate and set aside, leaving chicken and chorizo in the pan. Add
-              pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
-              stirring often until thickened and fragrant, about 10 minutes. Add
-              saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-            </Typography>
-            <Typography paragraph>
-              Add rice and stir very gently to distribute. Top with artichokes and
-              peppers, and cook without stirring, until most of the liquid is absorbed,
-              15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
-              mussels, tucking them down into the rice, and cook again without
-              stirring, until mussels have opened and rice is just tender, 5 to 7
-              minutes more. (Discard any mussels that don&apos;t open.)
-            </Typography>
-            <Typography>
-              Set aside off of the heat to let rest for 10 minutes, and then serve.
-            </Typography>
-          </CardContent>
-        </Collapse>
+       
       </Card>
 </Link>
      

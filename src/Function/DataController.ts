@@ -75,14 +75,14 @@ export class DataFunction {
 
   GetAllTravel(): Array<Travel> {
     let result = new Array<Travel>;
-    const querySnapshot = getDocs(collection(this.db, "users"));
+    const querySnapshot = getDocs(collection(this.db, "Travel"));
     querySnapshot.then(data => {
       data.forEach((doc) => {
         let travel = new Travel();
         travel.Title = doc.data()["Title"];
         travel.TravelDate = doc.data()["TravelDate"];
-       
         travel.Remark = doc.data()["Remark"];
+        travel.ImagePath = doc.data()["ImagePath"]
         result.push(travel);
       })
     });
@@ -92,7 +92,7 @@ export class DataFunction {
 
   GetAllTravelByTitle(Title:string): Travel {
     let result = new Travel;
-    const querySnapshot = getDocs(collection(this.db, "users"));
+    const querySnapshot = getDocs(collection(this.db, "Travel"));
     querySnapshot.then(data => {
       let FindData = data.docs.find(travel => travel.data()["Title"] == Title)?.data();
       if(FindData !== undefined){
@@ -115,7 +115,7 @@ export class DataFunction {
   CreateDaySChedule(daySchedule: DaySchedule): boolean {
     let result: boolean = false;
     try {
-      const docRef = addDoc(collection(this.db, "users"), {
+      const docRef = addDoc(collection(this.db, "Travel"), {
         Title: daySchedule.Title,
         Display: daySchedule.Display,
         Temp: daySchedule.Temp,
