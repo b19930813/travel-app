@@ -35,7 +35,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const [travel, setTravel] = React.useState({
+  const [statetravel, setTravel] = React.useState({
     Name: "",
     Date: "",
     Remark: "",
@@ -94,10 +94,10 @@ const handleTextChange = (event: { persist: () => void; target: { id: any; value
   const handleInsertTravel = () =>{
     const df = new DataFunction();
     let travel = new Travel();
-    travel.Title = "歐洲五日遊";
-    travel.TravelDate = new Date();
-    travel.Remark = "歐洲五日遊 好玩";
-    travel.ImagePath = "test.jpg";
+    travel.Title = statetravel.Name;
+    travel.TravelDate = new Date(statetravel.Date);
+    travel.Remark = statetravel.Remark;
+    travel.ImagePath = statetravel.Pic;
     let result = df.CreateTravel(travel);
     console.log(`新增一筆資料，結果 : ${result}`);
     alert("加入行程成功！");
@@ -147,38 +147,42 @@ const handleTextChange = (event: { persist: () => void; target: { id: any; value
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="Name"
             label="行程名稱"
             type="email"
             fullWidth
             variant="standard"
+            onChange={handleTextChange}
           />
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="Date"
             label="日期"
             type="email"
             fullWidth
             variant="standard"
+            onChange={handleTextChange}
           />
            <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="Remark"
             label="說明"
             type="email"
             fullWidth
             variant="standard"
+            onChange={handleTextChange}
           />
               <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="Pic"
             label="圖片"
             type="email"
             fullWidth
             variant="standard"
+            onChange={handleTextChange}
           />
         </DialogContent>
         <DialogActions>

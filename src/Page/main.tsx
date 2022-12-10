@@ -7,16 +7,19 @@ import { DataFunction, Travel, DaySchedule } from '../Function/DataController'
 
 function App() {
 
+  React.useEffect(() => {
+    
+}, [])
+
+
 
 const showResult = () =>{
   const elements = [
    
   ]
    const df = new DataFunction();
-   let result = df.GetAllTravel();
-   console.log(result);
- 
    
+   let result = df.GetAllTravel();
   
    let travel = new Travel();
    travel.Title = "東京五日遊";
@@ -30,7 +33,17 @@ const showResult = () =>{
    travel2.ImagePath = "https://imgur.com/y0ive8d.jpg"
    travel2.TravelDate = new Date("2022-09-20");
 
-  console.log(travel.Remark.length);
+
+
+  console.log(result);
+  console.log(result.at(1))
+
+  result.map((row) => {
+    elements.push(Card(travel));
+    elements.push(Card(travel2));
+  })
+   
+  console.log(`取得 result Length : ${result.length}`);
       elements.push(Card(travel));
     elements.push(Card(travel2));
   console.log("push done");

@@ -58,7 +58,7 @@ export class DataFunction {
       const docRef = addDoc(collection(this.db, "Travel"), {
         Title: travel.Title,
         Date: travel.TravelDate,
-      
+        ImagePath: travel.ImagePath,
         Remark: travel.Remark,      
     
       });
