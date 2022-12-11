@@ -1,9 +1,11 @@
 
 
 import { Cookie } from "@mui/icons-material";
+import { DocumentData, QuerySnapshot } from "firebase-admin/firestore";
 import { deleteApp, initializeApp } from "firebase/app";
-import { getDocs, getFirestore , deleteDoc , doc} from "firebase/firestore";
+import { getDocs, getFirestore , deleteDoc , doc , getDoc} from "firebase/firestore";
 import { collection, addDoc, setDoc } from "firebase/firestore";
+
 
 export class Travel {
   public Title: string;
@@ -51,6 +53,8 @@ export class DataFunction {
     this.db = getFirestore(this.app);
   }
 
+
+ 
   //#region Travel CRUD
 
   CreateTravel(travel: Travel): boolean {

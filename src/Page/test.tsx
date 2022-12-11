@@ -14,22 +14,19 @@ import { Console } from 'console';
 
 export default function BasicButtons() {
 
+  const [text, setText] = React.useState("");
 const handleDeleteData = () =>{
   const df = new DataFunction();
-df.DeleteAllTravel("行程125011");
+df.DeleteAllTravel("Test1211");
 }
 
   const handleCreateData = () => {
     const df = new DataFunction();
-    let daySchedule = new DaySchedule();
-    daySchedule.Title = "大阪1";
-    daySchedule.Display = "去1哪";
-    daySchedule.Temp = "Remar1k";
 
     let travel = new Travel();
-    travel.Title = "行程GGG";
+    travel.Title = "Test1211";
     travel.TravelDate = new Date();
-    travel.Remark = "testGG";
+    travel.Remark = "Update Remark";
     let result = df.CreateTravel(travel);
     console.log(`新增一筆資料，結果 : ${result}`);
   }
@@ -57,6 +54,12 @@ df.DeleteAllTravel("行程125011");
     console.log(`新增一筆資料，結果 : ${result}`);
   }
 
+  const handleReadTest = () => {
+ 
+    
+   
+  }
+
   return (
     <Stack spacing={2} direction="row">
       <Button variant="text" onClick={handleCreateData}> 建立一筆資料</Button>
@@ -64,6 +67,7 @@ df.DeleteAllTravel("行程125011");
       <Button variant="text" onClick={handleReadDataByTitle}> 讀取一筆資料</Button>
       <Button variant="text" onClick={handleCreateDayData}> 建立一筆Day資料</Button>
       <Button variant="text" onClick={handleDeleteData}> 刪除</Button>
+      <Button variant="text" onClick={handleReadTest}> Read Test</Button>
       <Button variant="outlined">Outlined</Button>
     </Stack>
   );
